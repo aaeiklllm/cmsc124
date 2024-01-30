@@ -1,0 +1,36 @@
+
+CMSC 124
+(Lab) Assignment #9: LISP 2: Functions 
+Antonino, Erica Mae
+Layug, Mikaella Louise
+
+1. (my-reverse ‘(a b c d e)) => (e d c b a)
+(defun my-reverse (x)
+	(if (null x)
+		nil
+		(append (my-reverse (rest x)) (list (first x)))))
+
+2. (count-elements ‘(a (b c) d e)) => 5
+(defun count-elements (x)
+	(if (null x)
+		0
+		(If (listp (first x)) 
+		(+ (length (first x)) (count-elements (rest x)))
+		(+ 1 (count-elements (rest x))))))
+
+3. (swap-first-second ‘(a b c d e)) => (b a c d e)
+(defun swap-first-second (x)
+	(cons (second x) (cons (first x) (rest (rest x)))))
+
+4. (middle-element ‘(a b c d e f)) => c
+(defun middle-element (x)
+	(nth ( - (ceiling (/ (length x) 2)) 1) x))
+
+5. (rotate ‘(a b c d e)) => ( b c d e a)
+(defun rotate (x)
+	(append (subseq x 1 (- (length x) 1)) 
+	(subseq x (- (length x) 1))
+	(subseq x 0 1)))
+	
+
+
